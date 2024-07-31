@@ -1,13 +1,13 @@
-const initGraph = {
-    "A":["B","E","H"],
-    "B":["A","C","D"],
-    "C":["B"],
-    "D":["B"],
-    "E":["A","F","G"],
-    "F":["E"],
-    "G":["G"],
-    "H":["A"]
-}
+const graph_init = {
+    "A": ["B", "E", "H"],
+    "B": ["C", "D"],  // Removemos "A" para evitar o ciclo A-B-A
+    "C": [],         // "C" só é acessível a partir de "B"
+    "D": [],         // "D" só é acessível a partir de "B"
+    "E": ["F"],      // Removemos "A" e "G" para evitar ciclos
+    "F": [],         // "F" só é acessível a partir de "E"
+    "G": [],         // "G" só é acessível a partir de "E"
+    "H": []          // Removemos "A" para evitar o ciclo A-H-A
+};
 
 
 
@@ -46,6 +46,4 @@ function dfs(graph,init,target){
     return console.log("Não foi possivel achar o elemento no grafo")
 }
 
-
-
-dfs(initGraph,"A","G")
+dfs(graph_init,"A","D")

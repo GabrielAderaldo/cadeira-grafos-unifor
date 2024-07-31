@@ -1,13 +1,53 @@
-const initGraph = {
-    "A":["B","E","H"],
-    "B":["A","C","D"],
-    "C":["B"],
-    "D":["B"],
-    "E":["A","F","G"],
-    "F":["E"],
-    "G":["G"],
-    "H":["A"]
-}
+
+const graph1 = {
+    "A": ["B", "C", "D"],
+    "B": ["E", "F"],
+    "C": ["G"],
+    "D": ["H"],
+    "E": [],
+    "F": [],
+    "G": [],
+    "H": []
+};
+
+// Visualização
+//     A
+//   / | \
+//  B  C  D
+// /|   |   \
+//E F  G   H
+
+const graphWithCycle = {
+    "A": ["B", "C", "D"],
+    "B": ["E", "F", "G"],
+    "C": ["H", "I"],
+    "D": ["J"],
+    "E": ["K", "L"],
+    "F": ["M"],
+    "G": ["N"],
+    "H": ["O", "P"],
+    "I": ["Q"],
+    "J": ["R", "S"],
+    "K": ["T"],
+    "L": ["U"],
+    "M": ["V"],
+    "N": ["W", "X"],
+    "O": ["Y"],
+    "P": ["Z"],
+    "Q": ["A"], // Ciclo: A -> C -> I -> Q -> A
+    "R": [],
+    "S": [],
+    "T": [],
+    "U": [],
+    "V": [],
+    "W": [],
+    "X": [],
+    "Y": [],
+    "Z": []
+};
+
+// Visualização do Ciclo: A -> C -> I -> Q -> A
+
 
 
 function dfs(graph,init){
@@ -37,6 +77,4 @@ function dfs(graph,init){
     return false
 }
 
-
-
-console.log(dfs(initGraph,"A"))
+console.log(dfs(graphWithCycle,"A"))
